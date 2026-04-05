@@ -267,17 +267,17 @@ async def get_patient_detail(
                 direction="increases_risk"
             ),
             FactorResponse(
-                feature_name="food_desert",
-                feature_value="True",
+                feature_name="visit_frequency_12mo",
+                feature_value="8",
                 shap_value=0.05,
-                category="sdoh",
+                category="administrative",
                 direction="increases_risk"
             ),
             FactorResponse(
-                feature_name="hba1c",
-                feature_value="7.2",
+                feature_name="food_desert",
+                feature_value="True",
                 shap_value=0.04,
-                category="clinical",
+                category="sdoh",
                 direction="increases_risk"
             )
         ],
