@@ -279,6 +279,13 @@ async def get_patient_detail(
                 shap_value=0.04,
                 category="sdoh",
                 direction="increases_risk"
+            ),
+            FactorResponse(
+                feature_name="hba1c",
+                feature_value="7.2",
+                shap_value=0.03,
+                category="clinical",
+                direction="increases_risk"
             )
         ],
         acknowledged=ack is not None if ack else patient_summary.acknowledged,
