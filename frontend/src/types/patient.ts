@@ -14,10 +14,8 @@ export enum CKDStage {
 
 export interface PatientSummary {
   patient_id: string;
-  demographics: {
-    age: number;
-    sex: string;
-  };
+  age: number;
+  sex: string;
   risk_score: number;
   risk_tier: RiskTier;
   ckd_stage: CKDStage;

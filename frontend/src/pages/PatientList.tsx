@@ -165,8 +165,8 @@ function PatientList() {
                 className="patient-row"
               >
                 <td>{patient.patient_id}</td>
-                <td>{patient.demographics.age}</td>
-                <td>{patient.demographics.sex}</td>
+                <td>{patient.age}</td>
+                <td>{patient.sex}</td>
                 <td>{patient.risk_score.toFixed(3)}</td>
                 <td>
                   <span className={`risk-badge ${getRiskTierColor(patient.risk_tier)}`}>
