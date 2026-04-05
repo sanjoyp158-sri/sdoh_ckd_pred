@@ -8,7 +8,7 @@ Technology stack: Python/FastAPI backend, React frontend, PostgreSQL database, R
 
 ## Tasks
 
-- [-] 1. Set up project structure and core infrastructure
+- [x] 1. Set up project structure and core infrastructure
   - Initialize Git repository and connect to remote: https://github.com/sanjoyp158-sri/sdoh_ckd_pred.git
   - Create .gitignore for Python, Node.js, and environment files
   - Create Python project with FastAPI backend structure
@@ -20,44 +20,44 @@ Technology stack: Python/FastAPI backend, React frontend, PostgreSQL database, R
   - Push initial project structure to GitHub
   - _Requirements: 13.1, 13.2, 14.1_
 
-- [ ] 2. Implement Data Integration Layer
-  - [ ] 2.1 Create data ingestion interfaces and models
+- [x] 2. Implement Data Integration Layer
+  - [x] 2.1 Create data ingestion interfaces and models
     - Implement `ClinicalRecord`, `AdministrativeRecord`, `SDOHRecord`, and `UnifiedPatientRecord` data classes
     - Create `DataIntegrationLayer` class with ingestion methods
     - Implement data validation for required fields
     - _Requirements: 1.1, 1.2, 1.3_
 
-  - [ ]* 2.2 Write property tests for data ingestion completeness
+  - [x] 2.2 Write property tests for data ingestion completeness
     - **Property 1: Clinical Data Ingestion Completeness**
     - **Property 2: Administrative Data Ingestion Completeness**
     - **Property 3: SDOH Data Retrieval Completeness**
     - **Validates: Requirements 1.1, 1.2, 1.3**
 
-  - [ ] 2.3 Implement data harmonization logic
+  - [x] 2.3 Implement data harmonization logic
     - Create `harmonize_patient_record()` method to combine all data sources
     - Implement missing data handling with regional averages for SDOH
     - Add error logging with source identification
     - _Requirements: 1.4, 1.5_
 
-  - [ ]* 2.4 Write property tests for data harmonization
+  - [x] 2.4 Write property tests for data harmonization
     - **Property 4: Data Harmonization Combines All Sources**
     - **Property 5: Data Ingestion Error Handling**
     - **Validates: Requirements 1.4, 1.5**
 
-  - [ ] 2.5 Create database persistence layer
+  - [x] 2.5 Create database persistence layer
     - Implement PostgreSQL schema for patient records
     - Create data access objects (DAOs) for CRUD operations
     - Add encryption at rest using AES-256
     - _Requirements: 13.1_
 
-- [ ] 3. Implement ML Analytics Engine core
-  - [ ] 3.1 Create ML Analytics Engine class and interfaces
+- [x] 3. Implement ML Analytics Engine core
+  - [x] 3.1 Create ML Analytics Engine class and interfaces
     - Implement `MLAnalyticsEngine` class with prediction methods
     - Create `PredictionResult` and `ModelMetrics` data classes
     - Set up model registry for versioning
     - _Requirements: 2.1, 15.4_
 
-  - [ ] 3.2 Implement feature engineering pipeline
+  - [x] 3.2 Implement feature engineering pipeline
     - Extract clinical features (eGFR, UACR, HbA1c, BP, BMI, medications)
     - Extract administrative features (visit frequency, referrals, insurance)
     - Extract SDOH features (ADI, food desert, housing, transportation)
@@ -65,34 +65,34 @@ Technology stack: Python/FastAPI backend, React frontend, PostgreSQL database, R
     - Create interaction features (eGFR × ADI, UACR × food desert)
     - _Requirements: 2.3_
 
-  - [ ]* 3.3 Write property tests for feature engineering
+  - [x] 3.3 Write property tests for feature engineering
     - **Property 7: Prediction Uses All Feature Types**
     - **Validates: Requirements 2.3**
 
-  - [ ] 3.4 Implement XGBoost classifier integration
+  - [x] 3.4 Implement XGBoost classifier integration
     - Create `XGBoostClassifier` wrapper class
     - Configure XGBoost parameters (max_depth=6, learning_rate=0.05, etc.)
     - Implement model loading from registry
     - Add prediction method with 500ms timeout
     - _Requirements: 2.1, 2.4_
 
-  - [ ]* 3.5 Write property tests for prediction
+  - [x] 3.5 Write property tests for prediction
     - **Property 6: Risk Score Bounds**
     - **Property 8: Prediction Latency**
     - **Validates: Requirements 2.1, 2.4**
 
-- [ ] 4. Checkpoint - Ensure core data and ML infrastructure works
+- [x] 4. Checkpoint - Ensure core data and ML infrastructure works
   - Ensure all tests pass, ask the user if questions arise.
 
-- [ ] 5. Implement SHAP Explainer
-  - [ ] 5.1 Create SHAP Explainer class
+- [x] 5. Implement SHAP Explainer
+  - [x] 5.1 Create SHAP Explainer class
     - Implement `SHAPExplainer` class using TreeSHAP
     - Create `SHAPExplanation`, `Factor`, and `CategorizedFactors` data classes
     - Pre-compute background dataset (1000 samples) for efficiency
     - Cache SHAP explainer object
     - _Requirements: 3.1, 3.2_
 
-  - [ ] 5.2 Implement SHAP value computation and explanation generation
+  - [x] 5.2 Implement SHAP value computation and explanation generation
     - Compute SHAP values for all features
     - Identify top 5 contributing factors
     - Categorize factors as clinical, administrative, or SDOH
@@ -100,7 +100,7 @@ Technology stack: Python/FastAPI backend, React frontend, PostgreSQL database, R
     - Meet 200ms latency requirement
     - _Requirements: 3.1, 3.2, 3.3, 3.4, 3.5_
 
-  - [ ]* 5.3 Write property tests for SHAP explanations
+  - [x] 5.3 Write property tests for SHAP explanations
     - **Property 9: SHAP Completeness**
     - **Property 10: SHAP Top Factors**
     - **Property 11: SHAP Factor Categorization**
@@ -116,7 +116,7 @@ Technology stack: Python/FastAPI backend, React frontend, PostgreSQL database, R
     - Add tier change logging with timestamps
     - _Requirements: 4.1, 4.2, 4.3, 4.4, 4.5_
 
-  - [ ]* 6.2 Write property tests for risk stratification
+  - [ ] 6.2 Write property tests for risk stratification
     - **Property 14: Risk Tier Assignment Correctness**
     - **Property 15: Risk Tier Change Logging**
     - **Validates: Requirements 4.1, 4.2, 4.3, 4.4, 4.5**
@@ -136,7 +136,7 @@ Technology stack: Python/FastAPI backend, React frontend, PostgreSQL database, R
     - Send notification to care coordination team on completion
     - _Requirements: 5.2, 5.4, 5.5_
 
-  - [ ]* 7.3 Write property tests for intervention workflows
+  - [ ] 7.3 Write property tests for intervention workflows
     - **Property 16: High-Risk Workflow Initiation Timing**
     - **Property 17: Intervention Workflow Completeness**
     - **Property 18: Intervention Step Retry Logic**
@@ -158,7 +158,7 @@ Technology stack: Python/FastAPI backend, React frontend, PostgreSQL database, R
     - Attempt scheduling within 21 days on escalation
     - _Requirements: 7.3, 7.4, 7.5_
 
-  - [ ]* 8.3 Write property tests for telehealth scheduling
+  - [ ] 8.3 Write property tests for telehealth scheduling
     - **Property 24: Telehealth Availability Check**
     - **Property 25: Earliest Appointment Selection**
     - **Property 26: Appointment Confirmation Completeness**
@@ -179,7 +179,7 @@ Technology stack: Python/FastAPI backend, React frontend, PostgreSQL database, R
     - Schedule 7-day follow-up reminder if no sample received
     - _Requirements: 8.3, 8.4, 8.5_
 
-  - [ ]* 9.3 Write property tests for blood draw dispatch
+  - [ ] 9.3 Write property tests for blood draw dispatch
     - **Property 28: Blood Draw Address Verification**
     - **Property 29: Blood Draw Kit Dispatch Timing**
     - **Property 30: Blood Draw Kit Contents**
@@ -201,7 +201,7 @@ Technology stack: Python/FastAPI backend, React frontend, PostgreSQL database, R
     - Enforce 50-patient caseload limit
     - _Requirements: 9.3, 9.4, 9.5_
 
-  - [ ]* 10.3 Write property tests for case management
+  - [ ] 10.3 Write property tests for case management
     - **Property 33: Case Manager Assignment by Capacity**
     - **Property 34: Case Record Completeness**
     - **Property 35: Case Manager Notification Timing**
@@ -238,7 +238,7 @@ Technology stack: Python/FastAPI backend, React frontend, PostgreSQL database, R
     - Implement audit log query endpoints for compliance
     - _Requirements: 13.4_
 
-  - [ ]* 12.5 Write property tests for security
+  - [ ] 12.5 Write property tests for security
     - **Property 48: Data at Rest Encryption**
     - **Property 49: Data in Transit Encryption**
     - **Property 50: Data Access Authentication and Authorization**
@@ -267,7 +267,7 @@ Technology stack: Python/FastAPI backend, React frontend, PostgreSQL database, R
     - Add provider acknowledgment button
     - _Requirements: 6.3, 6.4, 6.5_
 
-  - [ ]* 13.4 Write property tests for dashboard functionality
+  - [ ] 13.4 Write property tests for dashboard functionality
     - **Property 20: Dashboard Patient List Completeness**
     - **Property 21: Dashboard Filtering Correctness**
     - **Property 22: Dashboard Patient Detail Display**
@@ -282,7 +282,7 @@ Technology stack: Python/FastAPI backend, React frontend, PostgreSQL database, R
     - Ensure chronological ordering (train < validation < test)
     - _Requirements: 11.1, 11.2_
 
-  - [ ]* 14.2 Write property tests for data splitting
+  - [ ] 14.2 Write property tests for data splitting
     - **Property 41: Training Data Split Proportions**
     - **Property 42: Temporal Validation Ordering**
     - **Validates: Requirements 11.1, 11.2**
@@ -302,7 +302,7 @@ Technology stack: Python/FastAPI backend, React frontend, PostgreSQL database, R
     - Generate performance report
     - _Requirements: 11.4, 11.5, 10.1, 10.2, 10.3, 10.4_
 
-  - [ ]* 14.5 Write property tests for model training and fairness
+  - [ ] 14.5 Write property tests for model training and fairness
     - **Property 38: Fairness Monitoring by Subgroup**
     - **Property 39: Fairness Disparity Flagging**
     - **Property 40: Quarterly Fairness Report Completeness**
@@ -316,7 +316,7 @@ Technology stack: Python/FastAPI backend, React frontend, PostgreSQL database, R
     - Implement A/B testing with 10% traffic to new model
     - _Requirements: 15.2, 15.3, 15.4, 15.5_
 
-  - [ ]* 14.7 Write property tests for model deployment
+  - [ ] 14.7 Write property tests for model deployment
     - **Property 58: Model Performance Comparison**
     - **Property 59: Model Promotion Threshold**
     - **Property 60: Model Versioning and Rollback**
@@ -337,7 +337,7 @@ Technology stack: Python/FastAPI backend, React frontend, PostgreSQL database, R
     - Target BCR >= 3.75:1
     - _Requirements: 12.3, 12.4, 12.5_
 
-  - [ ]* 15.3 Write property tests for cost tracking
+  - [ ] 15.3 Write property tests for cost tracking
     - **Property 44: Intervention Cost Tracking Completeness**
     - **Property 45: Avoided Cost Tracking Completeness**
     - **Property 46: Benefit-Cost Ratio Calculation**
@@ -357,7 +357,7 @@ Technology stack: Python/FastAPI backend, React frontend, PostgreSQL database, R
     - Generate daily summary reports of system performance and intervention outcomes
     - _Requirements: 14.2, 14.3, 14.5_
 
-  - [ ]* 16.3 Write property tests for monitoring
+  - [ ] 16.3 Write property tests for monitoring
     - **Property 53: System Monitoring Metric Coverage**
     - **Property 54: Prediction Latency Alerting**
     - **Property 55: Data Ingestion Failure Alerting**
@@ -373,7 +373,7 @@ Technology stack: Python/FastAPI backend, React frontend, PostgreSQL database, R
     - Add de-identification audit logging
     - _Requirements: 13.5_
 
-  - [ ]* 17.2 Write property tests for de-identification
+  - [ ] 17.2 Write property tests for de-identification
     - **Property 52: Training Data De-identification**
     - **Validates: Requirements 13.5**
 
