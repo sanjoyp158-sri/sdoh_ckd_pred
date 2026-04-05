@@ -2,6 +2,30 @@
 
 An AI-enabled early detection system for Chronic Kidney Disease (CKD) that integrates clinical data with Social Determinants of Health (SDOH) to predict disease progression and trigger automated interventions.
 
+## 🚀 Quick Start
+
+**New to this project? Start here:**
+
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/sanjoyp158-sri/sdoh_ckd_pred.git
+   cd sdoh_ckd_pred
+   ```
+
+2. **Follow the setup guide**: See [SETUP_GUIDE.md](SETUP_GUIDE.md) for complete instructions
+
+3. **Quick commands** (after setup):
+   - Terminal 1: `cd backend && ../.venv/bin/python -m uvicorn app.main:app --reload --host 0.0.0.0 --port 8000`
+   - Terminal 2: `cd frontend && npm run dev`
+   - Open: http://localhost:3000
+   - Login: Any username/password (demo mode)
+
+**📖 Documentation:**
+- [SETUP_GUIDE.md](SETUP_GUIDE.md) - Complete setup instructions for external reviewers
+- [SIMPLE_START.md](SIMPLE_START.md) - Quick start commands
+- [API.md](API.md) - API documentation
+- [DEPLOYMENT.md](DEPLOYMENT.md) - Production deployment guide
+
 ## Overview
 
 SDOH-CKDPred predicts CKD progression from Stage 2-3 to Stage 4-5 within 24 months using XGBoost with SHAP explainability. The system automatically triggers interventions for high-risk patients including telehealth consultations, home blood draws, and case management enrollment.
