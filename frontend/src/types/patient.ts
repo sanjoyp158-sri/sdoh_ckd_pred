@@ -1,7 +1,7 @@
 export enum RiskTier {
-  HIGH = 'HIGH',
-  MODERATE = 'MODERATE',
-  LOW = 'LOW',
+  HIGH = 'high',
+  MODERATE = 'moderate',
+  LOW = 'low',
 }
 
 export enum CKDStage {

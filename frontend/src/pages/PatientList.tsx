@@ -170,7 +170,7 @@ function PatientList() {
                 <td>{patient.risk_score.toFixed(3)}</td>
                 <td>
                   <span className={`risk-badge ${getRiskTierColor(patient.risk_tier)}`}>
-                    {patient.risk_tier}
+                    {patient.risk_tier.toUpperCase()}
                   </span>
                 </td>
                 <td>Stage {patient.ckd_stage}</td>
