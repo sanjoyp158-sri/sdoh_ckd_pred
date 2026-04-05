@@ -108,15 +108,15 @@ Technology stack: Python/FastAPI backend, React frontend, PostgreSQL database, R
     - **Property 13: SHAP Explanation Latency**
     - **Validates: Requirements 3.1, 3.2, 3.3, 3.4, 3.5**
 
-- [ ] 6. Implement Risk Stratification Module
-  - [ ] 6.1 Create Risk Stratification Module
+- [x] 6. Implement Risk Stratification Module
+  - [x] 6.1 Create Risk Stratification Module
     - Implement `RiskStratificationModule` class
     - Create `RiskTier` enum (HIGH, MODERATE, LOW)
     - Implement `stratify_patient()` method with thresholds (>0.65, 0.35-0.65, <0.35)
     - Add tier change logging with timestamps
     - _Requirements: 4.1, 4.2, 4.3, 4.4, 4.5_
 
-  - [ ] 6.2 Write property tests for risk stratification
+  - [x] 6.2 Write property tests for risk stratification
     - **Property 14: Risk Tier Assignment Correctness**
     - **Property 15: Risk Tier Change Logging**
     - **Validates: Requirements 4.1, 4.2, 4.3, 4.4, 4.5**
