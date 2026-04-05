@@ -38,7 +38,7 @@ function Login() {
               onChange={(e) => setUsername(e.target.value)}
               required
               className="form-input"
-              placeholder="provider1 or admin1"
+              placeholder="Enter any username"
             />
           </div>
           
@@ -51,7 +51,7 @@ function Login() {
               onChange={(e) => setPassword(e.target.value)}
               required
               className="form-input"
-              placeholder="password123 or admin123"
+              placeholder="Enter any password"
             />
           </div>
           
@@ -59,7 +59,7 @@ function Login() {
             <div className="login-error">
               {error}
               <div style={{ fontSize: '0.85em', marginTop: '8px', opacity: 0.9 }}>
-                Try: provider1 / password123 or admin1 / admin123
+                Make sure both backend and frontend servers are running
               </div>
             </div>
           )}
