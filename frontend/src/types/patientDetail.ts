@@ -8,47 +8,37 @@ export interface Factor {
   direction: 'increases_risk' | 'decreases_risk';
 }
 
-export interface SHAPExplanation {
-  baseline_risk: number;
-  prediction: number;
-  top_factors: Factor[];
-  computation_time_ms: number;
-}
-
 export interface PatientDetail {
   patient_id: string;
-  demographics: {
-    age: number;
-    sex: string;
-  };
+  age: number;
+  sex: string;
+  risk_score: number;
+  risk_tier: RiskTier;
+  prediction_date: string;
+  model_version: string;
   clinical: {
     egfr: number;
-    egfr_history: Array<{ date: string; value: number }>;
     uacr: number;
     hba1c: number;
     systolic_bp: number;
     diastolic_bp: number;
     bmi: number;
     ckd_stage: CKDStage;
-    comorbidities: string[];
   };
   administrative: {
     visit_frequency_12mo: number;
+    specialist_referrals_count: number;
     insurance_type: string;
-    last_visit_date: string;
+    insurance_status: string;
   };
   sdoh: {
     adi_percentile: number;
     food_desert: boolean;
     housing_stability_score: number;
     transportation_access_score: number;
-    rural_urban_code: string;
   };
-  prediction: {
-    risk_score: number;
-    risk_tier: RiskTier;
-    prediction_date: string;
-    shap_explanation: SHAPExplanation;
-  };
+  top_factors: Factor[];
   acknowledged: boolean;
+  acknowledged_by?: string;
+  acknowledged_at?: string;
 }

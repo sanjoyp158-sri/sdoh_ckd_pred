@@ -13,9 +13,6 @@ import {
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
-  LineChart,
-  Line,
-  Legend,
 } from 'recharts';
 import './PatientDetail.css';
 
@@ -49,24 +46,19 @@ function PatientDetail() {
     return <div className="error">Error loading patient details</div>;
   }
 
-  const shapData = patient.prediction.shap_explanation.top_factors.map((factor) => ({
+  const shapData = patient.top_factors.map((factor) => ({
     name: factor.feature_name,
     value: factor.shap_value,
     category: factor.category,
   }));
 
-  const egfrTrendData = patient.clinical.egfr_history.map((point) => ({
-    date: format(new Date(point.date), 'MMM yyyy'),
-    egfr: point.value,
-  }));
-
   const getRiskColor = () => {
-    switch (patient.prediction.risk_tier) {
-      case 'HIGH':
+    switch (patient.risk_tier) {
+      case 'high':
         return '#ef4444';
-      case 'MODERATE':
+      case 'moderate':
         return '#f59e0b';
-      case 'LOW':
+      case 'low':
         return '#10b981';
       default:
         return '#6b7280';
@@ -111,22 +103,22 @@ function PatientDetail() {
               style={{ borderColor: getRiskColor() }}
             >
               <span className="risk-score-value">
-                {(patient.prediction.risk_score * 100).toFixed(1)}%
+                {(patient.risk_score * 100).toFixed(1)}%
               </span>
               <span className="risk-score-label">Risk Score</span>
             </div>
             <div className="risk-tier-badge" style={{ backgroundColor: getRiskColor() }}>
-              {patient.prediction.risk_tier} RISK
+              {patient.risk_tier.toUpperCase()} RISK
             </div>
           </div>
           <div className="risk-info">
             <div className="info-row">
               <span>Prediction Date:</span>
-              <span>{format(new Date(patient.prediction.prediction_date), 'MMM dd, yyyy')}</span>
+              <span>{format(new Date(patient.prediction_date), 'MMM dd, yyyy')}</span>
             </div>
             <div className="info-row">
-              <span>Baseline Risk:</span>
-              <span>{(patient.prediction.shap_explanation.baseline_risk * 100).toFixed(1)}%</span>
+              <span>Model Version:</span>
+              <span>{patient.model_version}</span>
             </div>
           </div>
           {!patient.acknowledged && (
@@ -149,11 +141,11 @@ function PatientDetail() {
           <div className="info-grid">
             <div className="info-item">
               <span className="info-label">Age</span>
-              <span className="info-value">{patient.demographics.age} years</span>
+              <span className="info-value">{patient.age} years</span>
             </div>
             <div className="info-item">
               <span className="info-label">Sex</span>
-              <span className="info-value">{patient.demographics.sex}</span>
+              <span className="info-value">{patient.sex}</span>
             </div>
           </div>
         </div>
@@ -189,18 +181,6 @@ function PatientDetail() {
               <span className="info-value">{patient.clinical.bmi.toFixed(1)} kg/m²</span>
             </div>
           </div>
-          {patient.clinical.comorbidities.length > 0 && (
-            <div className="comorbidities">
-              <span className="info-label">Comorbidities:</span>
-              <div className="comorbidity-tags">
-                {patient.clinical.comorbidities.map((condition) => (
-                  <span key={condition} className="tag">
-                    {condition}
-                  </span>
-                ))}
-              </div>
-            </div>
-          )}
         </div>
 
         {/* Administrative Data Card */}
@@ -212,14 +192,16 @@ function PatientDetail() {
               <span className="info-value">{patient.administrative.visit_frequency_12mo}</span>
             </div>
             <div className="info-item">
+              <span className="info-label">Specialist Referrals</span>
+              <span className="info-value">{patient.administrative.specialist_referrals_count}</span>
+            </div>
+            <div className="info-item">
               <span className="info-label">Insurance</span>
               <span className="info-value">{patient.administrative.insurance_type}</span>
             </div>
             <div className="info-item">
-              <span className="info-label">Last Visit</span>
-              <span className="info-value">
-                {format(new Date(patient.administrative.last_visit_date), 'MMM dd, yyyy')}
-              </span>
+              <span className="info-label">Insurance Status</span>
+              <span className="info-value">{patient.administrative.insurance_status}</span>
             </div>
           </div>
         </div>
@@ -247,10 +229,6 @@ function PatientDetail() {
               <span className="info-value">
                 {(patient.sdoh.transportation_access_score * 100).toFixed(0)}%
               </span>
-            </div>
-            <div className="info-item">
-              <span className="info-label">Location</span>
-              <span className="info-value">{patient.sdoh.rural_urban_code}</span>
             </div>
           </div>
         </div>
@@ -294,30 +272,6 @@ function PatientDetail() {
           </span>
         </div>
       </div>
-
-      {/* eGFR Trend Chart */}
-      {egfrTrendData.length > 0 && (
-        <div className="card chart-card">
-          <h2>eGFR Trend</h2>
-          <ResponsiveContainer width="100%" height={300}>
-            <LineChart data={egfrTrendData}>
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="date" />
-              <YAxis label={{ value: 'eGFR (mL/min/1.73m²)', angle: -90, position: 'insideLeft' }} />
-              <Tooltip />
-              <Legend />
-              <Line
-                type="monotone"
-                dataKey="egfr"
-                stroke="#3b82f6"
-                strokeWidth={2}
-                dot={{ r: 4 }}
-                name="eGFR"
-              />
-            </LineChart>
-          </ResponsiveContainer>
-        </div>
-      )}
     </div>
   );
 }
