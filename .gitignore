@@ -109,3 +109,24 @@ secrets/
 *.pem
 *.key
 *.crt
+
+# SSL/TLS certificates and keys
+nginx/ssl/*.pem
+nginx/ssl/*.key
+nginx/ssl/*.crt
+nginx/dhparam.pem
+
+# Backup files
+*.bak
+*.backup
+
+# PostgreSQL data
+postgres_data/
+
+# Redis data
+redis_data/
+
+# Backend logs
+backend_logs/
+backend/logs/
+
