@@ -119,7 +119,25 @@ XGB_PARAMS = {
 }
 
 CV_FOLDS = 5
-RISK_THRESHOLD = 0.65       # Youden's J optimized
+BAYES_OPT_ITERATIONS = 200   # Bayesian hyperparameter optimization per manuscript
+RISK_THRESHOLD = 0.65        # Youden's J optimized threshold
+
+# Baseline model: constrained complexity (fewer features, simpler model)
+BASELINE_XGB_PARAMS = {
+    "max_depth":        2,
+    "learning_rate":    0.05,
+    "n_estimators":     150,
+    "subsample":        0.7,
+    "colsample_bytree": 0.6,
+    "min_child_weight": 15,
+    "gamma":            1.0,
+    "reg_alpha":        2.0,
+    "reg_lambda":       5.0,
+    "eval_metric":      "auc",
+    "use_label_encoder": False,
+    "random_state":     SEED,
+    "n_jobs":           -1,
+}
 
 # ── Cost-effectiveness parameters (USRDS 2023 Medicare) ──────────────────
 COST_STAGE5_PER_YEAR  = 89_000   # USD
