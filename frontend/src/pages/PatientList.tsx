@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
 import { patientService } from '../services/patientService';
-import { PatientFilters, RiskTier, CKDStage, PatientSummary } from '../types/patient';
+import { PatientFilters, RiskTier, CKDStage } from '../types/patient';
 import { format } from 'date-fns';
 import './PatientList.css';
 
