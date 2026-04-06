@@ -24,6 +24,8 @@ def preprocess(df):
     d = df.copy()
     le = LabelEncoder()
     d["sex_encoded"] = le.fit_transform(d["sex"])
+    d["egfr_x_adi"] = d["egfr_baseline"] * d["adi_nat_rank"]
+    d["uacr_x_food_desert"] = d["uacr_baseline"] * d["food_desert"]
     return d
 
 
